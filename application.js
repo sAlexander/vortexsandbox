@@ -20,32 +20,48 @@ $('#container').mousedown(function(event) {
 });
 
 // Create a reflective class for each vortex
-function Refvort (base) {this.base = base; return this;}
-Refvort.prototype.hasClass = function(klass){
-    switch(klass)
-    {
-        case 'positive': if(this.base.hasClass('positive')){return false;}else{return true;}; break;
-        case 'negative': if(this.base.hasClass('negative')){return false;}else{return true;}; break;
-        default: return false;
+function Vortex (base, reflective = false) {
+    this.base = base;
+    this.reflection = reflective;
+}
+Vortex.prototype.positive = function(){
+    if(this.base.reflection){
+        return !$(this.base).hasClass('positive');
+    }else{
+        return $(this.base).hasClass('positive');
     }
 }
-Refvort.prototype.css = function (attr){
-    switch(attr)
-    {
-        case 'top': return '-'+this.base.css('top'); break;
-        case 'left': return this.base.css('left'); break;
-        default: '0px';
+Vortex.prototype.x = function(){
+    if(this.base.reflection){
+        return parseFloat('-'+$(this.base).css('top'),10);
+    }else{
+        return parseFloat($(this.base).css('top'),10);
+    }
+}
+Vortex.prototype.y = function(){
+    return parseFloat($(this.base).css('left'),10);
+}
+
+Vortex.prototype.setx = function(value){
+    if(this.base.reflection){
+        return true;
+    }else{
+        this.base.css('top',value);
     }
 }
 
+Vortex.prototype.sety = function(value){
+    if(this.base.reflection){
+        return true;
+    }else{
+        this.base.css('top',value);
+    }
+}
 
 
 // Utility functions
-y = function(a){return parseFloat(if(typeof a.css == 'function'){a.css('top')}else{$(a).css('top')},10)};
-x = function(a){return parseFloat(if(typeof a.css == 'function'){a.css('left')}else{$(a).css('left')},10)};
-sety = function(a){ return false}
-ylen = function(a,b){return y(b) - y(a)};
-xlen = function(a,b){return x(b) - x(a)};
+ylen = function(a,b){return b.y - a.y};
+xlen = function(a,b){return b.x - a.x};
 radius = function(a,b){return Math.sqrt(Math.pow(xlen(a,b),2)+Math.pow(ylen(a,b),2))};
 debug = function(statement){$('#debug').html($('#debug').html() + '\n' + statement)};
 togglerunning = function(){ running = !running; $('#button').attr('value',running);};
@@ -61,26 +77,28 @@ stepforward = function(){
         vorticies = $('.vortex');
         toadd_x = []; toadd_y = [];
         vorticies.each(function(iRoot,root){
+            var vroot = new Vortex(root);
             var u_x = 0;
             var u_y = 0;
             $('.vortex').each(function(iContr, contr){
-                if($(contr).hasClass('positive')){sign = 1}else{sign = -1}
-                if(radius(root,contr)>1) {
-                    var r = radius(root,contr);
+                var vcontr = new Vortex(contr);
+                if(vcontr.positive()){sign = 1}else{sign = -1}
+                var r = radius(vroot,vcontr);
+                if(r>1) {
                     var u_theta = sign*gamma / (2 * Math.PI * r);
-                    u_y = u_y + u_theta*xlen(root,contr)/r;
-                    u_x = u_x - u_theta*ylen(root,contr)/r;
+                    u_y = u_y + u_theta*xlen(vroot,vcontr)/r;
+                    u_x = u_x - u_theta*ylen(vroot,vcontr)/r;
                 };
             });
             toadd_x.push(u_x*dt);
             toadd_y.push(u_y*dt);
         });
         vorticies.each(function(iRoot,root){
-            $(root).css('top',y(root) + toadd_y.shift());
-            $(root).css('left',x(root) + toadd_x.shift());
+            var vroot = new Vortex(root);
+            vroot.sety(vroot.y + toadd_y.shift());
+            vroot.setx(vroot.x + toadd_x.shift());
         })
     }
-
 }
 
 
