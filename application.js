@@ -19,6 +19,27 @@ $('#container').mousedown(function(event) {
     }
 });
 
+// Create a reflective class for each vortex
+function Refvort (base) {this.base = base;}
+Refvort.prototype.hasClass = function(class){
+    switch(class)
+    {
+        case 'positive': if this.base.hasClass('positive'){return false;}else{return true;}; break;
+        case 'negative': if this.base.hasClass('negative'){return false;}else{return true;}; break;
+        default: return false;
+    }
+}
+Refvort.prototype.css = function (attr){
+    switch(attr)
+    {
+        case 'top': return '-'+this.base.css('top'); break;
+        case 'left': return this.base.css('left'); break;
+        default: '0px';
+    }
+}
+
+
+
 // Utility functions
 y = function(a){return parseFloat($(a).css('top'),10)};
 x = function(a){return parseFloat($(a).css('left'),10)};
