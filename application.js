@@ -20,7 +20,7 @@ $('#container').mousedown(function(event) {
 });
 
 // Create a reflective class for each vortex
-function Refvort (base) {this.base = base;}
+function Refvort (base) {this.base = base; return this;}
 Refvort.prototype.hasClass = function(klass){
     switch(klass)
     {
@@ -41,8 +41,8 @@ Refvort.prototype.css = function (attr){
 
 
 // Utility functions
-y = function(a){return parseFloat($(a).css('top'),10)};
-x = function(a){return parseFloat($(a).css('left'),10)};
+y = function(a){return parseFloat(a.css('top'),10)};
+x = function(a){return parseFloat(a.css('left'),10)};
 sety = function(a){ return false}
 ylen = function(a,b){return y(b) - y(a)};
 xlen = function(a,b){return x(b) - x(a)};
