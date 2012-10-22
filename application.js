@@ -61,6 +61,14 @@ xlen = function(a,b){return b.x() - a.x()};
 radius = function(a,b){return Math.sqrt(Math.pow(xlen(a,b),2)+Math.pow(ylen(a,b),2))};
 debug = function(statement){$('#debug').html($('#debug').html() + '\n' + statement)};
 togglerunning = function(){ running = !running; $('#button').attr('value',running);};
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+    });
+    return vars;
+}
+
 
 // Variable to hold the running state
 var running = false
@@ -102,6 +110,22 @@ stepforward = function(){
 
 
 $(document).ready(function(){
-setInterval(stepforward,10);
-$('#button').click(togglerunning);
+    if( getUrlVars()['init'] == 'spinning'){
+        $('#container').append('<div class="vortex positive" style="left:200px; top:200px">+</div>');
+        $('#container').append('<div class="vortex negative" style="left:200px; top:250px">+</div>');
+        }
+    if( getUrlVars()['init'] == 'leapfrog'){
+        $('#container').append('<div class="vortex positive" style="left:200px; top:200px">+</div>');
+        $('#container').append('<div class="vortex positive" style="left:200px; top:250px">+</div>');
+        $('#container').append('<div class="vortex negative" style="left:200px; top:400px">+</div>');
+        $('#container').append('<div class="vortex negative" style="left:200px; top:450px">+</div>');
+        }
+    if( getUrlVars()['init'] == 'expleapfrog'){
+        $('#container').append('<div class="vortex positive" style="top:200px; left:200px">+</div>');
+        $('#container').append('<div class="vortex positive" style="top:200px; left:250px">+</div>');
+        $('#container').append('<div class="vortex negative" style="top:200px; left:400px">+</div>');
+        $('#container').append('<div class="vortex negative" style="top:200px; left:450px">+</div>');
+        }
+    setInterval(stepforward,10);
+    $('#button').click(togglerunning);
 });
