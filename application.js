@@ -20,9 +20,9 @@ $('#container').mousedown(function(event) {
 });
 
 // Create a reflective class for each vortex
-function Vortex (base, reflective = false) {
+function Vortex (base, ref) {
     this.base = base;
-    this.reflection = reflective;
+    this.reflection = typeof ref !== 'undefined' ? ref : false;
 }
 Vortex.prototype.positive = function(){
     if(this.base.reflection){
