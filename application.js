@@ -60,8 +60,8 @@ Vortex.prototype.sety = function(value){
 
 
 // Utility functions
-ylen = function(a,b){return b.y - a.y};
-xlen = function(a,b){return b.x - a.x};
+ylen = function(a,b){return b.y() - a.y()};
+xlen = function(a,b){return b.x() - a.x()};
 radius = function(a,b){return Math.sqrt(Math.pow(xlen(a,b),2)+Math.pow(ylen(a,b),2))};
 debug = function(statement){$('#debug').html($('#debug').html() + '\n' + statement)};
 togglerunning = function(){ running = !running; $('#button').attr('value',running);};
