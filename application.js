@@ -77,14 +77,17 @@ stepforward = function(){
             var u_x = 0;
             var u_y = 0;
             $('.vortex').each(function(iContr, contr){
-                var vcontr = new Vortex(contr);
-                if(vcontr.positive()){sign = 1}else{sign = -1}
-                var r = radius(vroot,vcontr);
-                if(r>1) {
-                    var u_theta = sign*gamma / (2 * Math.PI * r);
-                    u_y = u_y + u_theta*xlen(vroot,vcontr)/r;
-                    u_x = u_x - u_theta*ylen(vroot,vcontr)/r;
-                };
+                var vcontrnonref = new Vortex(contr);
+                var vcontrref = new Vortex(contr, true);
+                [vcontrnonref, vcontrref].each(function(iVContr, vcontr){
+                    if(vcontr.positive()){sign = 1}else{sign = -1}
+                    var r = radius(vroot,vcontr);
+                    if(r>1) {
+                        var u_theta = sign*gamma / (2 * Math.PI * r);
+                        u_y = u_y + u_theta*xlen(vroot,vcontr)/r;
+                        u_x = u_x - u_theta*ylen(vroot,vcontr)/r;
+                    };
+                };)
             });
             toadd_x.push(u_x*dt);
             toadd_y.push(u_y*dt);
