@@ -95,8 +95,8 @@ stepforward = function(){
         });
         vorticies.each(function(iRoot,root){
             var vroot = new Vortex(root);
-            vroot.sety(vroot.y + toadd_y.shift());
-            vroot.setx(vroot.x + toadd_x.shift());
+            vroot.sety(vroot.y() + toadd_y.shift());
+            vroot.setx(vroot.x() + toadd_x.shift());
         })
     }
 }
