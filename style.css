@@ -1,7 +1,5 @@
 #container {
-    width:800px;
-    height:800px;
-    border: 3px solid black;
+    border-top: 3px solid black;
     position:relative; 
 }
 
@@ -11,4 +9,8 @@
     height:20px;
     margin-left: -7px;
     margin-top: -15px;
+}
+
+h1, h2, h3 {
+    font-family: 'Walter Turncoat', cursive;
 }
