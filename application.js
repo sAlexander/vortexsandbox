@@ -87,7 +87,7 @@ stepforward = function(){
                         u_y = u_y + u_theta*xlen(vroot,vcontr)/r;
                         u_x = u_x - u_theta*ylen(vroot,vcontr)/r;
                     };
-                };)
+                });
             });
             toadd_x.push(u_x*dt);
             toadd_y.push(u_y*dt);
