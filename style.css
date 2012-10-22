@@ -1,3 +1,6 @@
+body {
+    font-family: Arial, Helvetica, sans-serif; 
+}
 #container {
     border-top: 3px solid black;
     position:relative; 
@@ -37,6 +40,21 @@ h1, h2, h3 {
     font-family: 'Walter Turncoat', cursive;
 }
 
+h1 {
+    text-align: center;
+}
+
 input {
     width: 5em;
 }
+
+ol {
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 1.5em;
+}
+
+li {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 1em;
+}
+
