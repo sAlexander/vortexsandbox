@@ -21,11 +21,13 @@
 .topbar {
     clear: both;
     width: 100%;
+    background-color: #ddd;
 }
 
-hspace {
+.hspace {
     display:inline;
-    width: 50x;
+    width: 50px;
+    height:1em;
 }
 
 h1, h2, h3 {
