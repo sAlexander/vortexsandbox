@@ -14,11 +14,18 @@
 .topbox{
     width:300px;
     float:left;
+    padding: 2em;
+    border-left: 1px dashed black;
 }
 
 .topbar {
     clear: both;
     width: 100%;
+}
+
+hspace {
+    display:inline;
+    width: 50x;
 }
 
 h1, h2, h3 {
