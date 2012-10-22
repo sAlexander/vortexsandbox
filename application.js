@@ -113,19 +113,23 @@ $(document).ready(function(){
     if( getUrlVars()['init'] == 'spinning'){
         $('#container').append('<div class="vortex positive" style="left:200px; top:200px">+</div>');
         $('#container').append('<div class="vortex positive" style="left:200px; top:250px">+</div>');
-        }
+        running = true;
+        } else
     if( getUrlVars()['init'] == 'leapfrog'){
         $('#container').append('<div class="vortex positive" style="left:200px; top:200px">+</div>');
         $('#container').append('<div class="vortex positive" style="left:200px; top:250px">+</div>');
         $('#container').append('<div class="vortex negative" style="left:200px; top:400px">-</div>');
         $('#container').append('<div class="vortex negative" style="left:200px; top:450px">-</div>');
-        }
+        running = true;
+        } else
     if( getUrlVars()['init'] == 'expleapfrog'){
         $('#container').append('<div class="vortex positive" style="top:200px; left:200px">+</div>');
         $('#container').append('<div class="vortex positive" style="top:200px; left:250px">+</div>');
         $('#container').append('<div class="vortex negative" style="top:200px; left:400px">-</div>');
         $('#container').append('<div class="vortex negative" style="top:200px; left:450px">-</div>');
-        }
+        running = true;
+        } else
+        {running = false;}
     setInterval(stepforward,10);
     $('#button').click(togglerunning);
 });
