@@ -21,8 +21,8 @@ $('#container').mousedown(function(event) {
 
 // Create a reflective class for each vortex
 function Refvort (base) {this.base = base;}
-Refvort.prototype.hasClass = function(class){
-    switch(class)
+Refvort.prototype.hasClass = function(klass){
+    switch(klass)
     {
         case 'positive': if this.base.hasClass('positive'){return false;}else{return true;}; break;
         case 'negative': if this.base.hasClass('negative'){return false;}else{return true;}; break;
