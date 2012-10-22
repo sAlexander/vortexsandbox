@@ -43,11 +43,7 @@ Vortex.prototype.y = function(){
 }
 
 Vortex.prototype.setx = function(value){
-    if(this.base.reflection){
-        return true;
-    }else{
-        $(this.base).css('left',value);
-    }
+    $(this.base).css('left',value);
 }
 
 Vortex.prototype.sety = function(value){
