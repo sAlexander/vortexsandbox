@@ -46,7 +46,7 @@ Vortex.prototype.setx = function(value){
     if(this.base.reflection){
         return true;
     }else{
-        this.base.css('top',value);
+        $(this.base).css('left',value);
     }
 }
 
@@ -54,7 +54,7 @@ Vortex.prototype.sety = function(value){
     if(this.base.reflection){
         return true;
     }else{
-        this.base.css('top',value);
+        $(this.base).css('top',value);
     }
 }
 
