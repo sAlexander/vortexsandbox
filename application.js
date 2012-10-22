@@ -79,7 +79,7 @@ stepforward = function(){
             $('.vortex').each(function(iContr, contr){
                 var vcontrnonref = new Vortex(contr);
                 var vcontrref = new Vortex(contr, true);
-                [vcontrnonref, vcontrref].each(function(iVContr, vcontr){
+                $.each([vcontrnonref, vcontrref], function(iVContr, vcontr){
                     if(vcontr.positive()){sign = 1}else{sign = -1}
                     var r = radius(vroot,vcontr);
                     if(r>1) {
