@@ -11,6 +11,16 @@
     margin-top: -15px;
 }
 
+.topbox{
+    width:300px;
+    float:left;
+}
+
+.topbar {
+    clear: both;
+    width: 100%;
+}
+
 h1, h2, h3 {
     font-family: 'Walter Turncoat', cursive;
 }
