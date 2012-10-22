@@ -31,14 +31,14 @@ Vortex.prototype.positive = function(){
         return $(this.base).hasClass('positive');
     }
 }
-Vortex.prototype.x = function(){
+Vortex.prototype.y = function(){
     if(this.base.reflection){
         return parseFloat('-'+$(this.base).css('top'),10);
     }else{
         return parseFloat($(this.base).css('top'),10);
     }
 }
-Vortex.prototype.y = function(){
+Vortex.prototype.x = function(){
     return parseFloat($(this.base).css('left'),10);
 }
 
