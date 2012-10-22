@@ -20,19 +20,19 @@ $('#container').mousedown(function(event) {
 });
 
 // Create a reflective class for each vortex
-function Vortex (base, ref) {
+function Vortex (base, reflection) {
     this.base = base;
-    this.reflection = typeof ref !== 'undefined' ? ref : false;
+    this.reflection = typeof reflection !== 'undefined' ? reflection : false;
 }
 Vortex.prototype.positive = function(){
-    if(this.base.reflection){
+    if(this.reflection){
         return !$(this.base).hasClass('positive');
     }else{
         return $(this.base).hasClass('positive');
     }
 }
 Vortex.prototype.y = function(){
-    if(this.base.reflection){
+    if(this.reflection){
         return parseFloat('-'+$(this.base).css('top'),10);
     }else{
         return parseFloat($(this.base).css('top'),10);
@@ -47,7 +47,7 @@ Vortex.prototype.setx = function(value){
 }
 
 Vortex.prototype.sety = function(value){
-    if(this.base.reflection){
+    if(this.reflection){
         return true;
     }else{
         $(this.base).css('top',value);
