@@ -44,6 +44,9 @@ Vortex.prototype.x = function(){
 
 Vortex.prototype.setx = function(value){
     $(this.base).css('left',value);
+    if($(this.base).position().top > $(this.base).parent().height()){
+      $(this.base).remove();
+    }
 }
 
 Vortex.prototype.sety = function(value){
@@ -51,6 +54,9 @@ Vortex.prototype.sety = function(value){
         return true;
     }else{
         $(this.base).css('top',value);
+    }
+    if($(this.base).position().left > $(this.base).parent().width() || $(this.base).position().left < 0){
+      $(this.base).remove();
     }
 }
 
