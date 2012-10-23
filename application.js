@@ -33,7 +33,7 @@ Vortex.prototype.positive = function(){
 }
 Vortex.prototype.y = function(){
     if(this.reflection){
-        return parseFloat('-'+$(this.base).css('top'),10);
+        return parseFloat($(this.base).css('top'),10) - 2*$(this.base).position().top+6;
     }else{
         return parseFloat($(this.base).css('top'),10);
     }
